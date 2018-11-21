@@ -1,0 +1,41 @@
+# Angular Version Tracking
+New angular versions are released frequently. The angular-cli tool includes
+a "generate" feature that can be used to build base angular source code that
+can be used as skeleton boilerplate code to modify and build on top of.
+
+As the angular framework is developed there can be new changes made to these
+generated base templates, and so want to be able to track them, so we have
+an awareness and can incorporate changes into our existing templates as
+desired. 
+
+## Git repo structure
+The master branch contains generic instructions. For each angular-cli
+release that we inspect, we will create a new git orphan branch which 
+will contain the output of a set of basic "ng generate" commands.
+
+We can then used this output to inspect the difference from one release
+to the next.
+
+## Creating a new branch for a new angular-cli release
+* Use "git branch -a" to see a list of the branches.
+* Install the latest angular: "npm install -g @angular/cli".
+* Run "ng --version" to see if there's a newer version that doesn't have a git branch yet.
+* Create a git orphan branch for the new version. "git checkout --orphan angular-cli-X.X.X".
+* Delete the files from the working folder and index "git rm -rf .".
+* "rm -fr angular-tour-of-heroes" to delete the ng app if it exists in your working area.
+
+Run:
+```
+ng --version > ng-version.txt
+ng help > ng-help.txt
+ng new angular-tour-of-heroes
+cd angular-tour-of-heroes
+ng generate component heroes
+ng generate service hero
+ng generate module app-routing --flat --module=app
+cd ..
+git add *
+git commit -m "Exec ng commands using angular-cli-X.X.X"
+```
+
+* Compare the directory contents of the latest and previous version. 
