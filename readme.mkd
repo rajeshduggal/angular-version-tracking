@@ -30,7 +30,6 @@ ng --version > ng-version.txt
 ng help > ng-help.txt
 ng new angular-tour-of-heroes
 cd angular-tour-of-heroes
-ng update --all
 ng generate component heroes
 ng generate service hero
 ng generate module app-routing --flat --module=app
